@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="container-sm">
-      <nav class="navbar bg-danger">
+      <nav class="navbar bg-danger sticky-top">
         <div class="container-fluid">
           <form class="d-flex" role="search">
             <input
@@ -57,13 +57,13 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="..." class="d-block w-100" alt="..." />
+            <img src="{% static 'images/carousel/image1.jpg' %}" height="200px" class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="..." />
+            <img src="{% static 'images/carousel/image2.jpg' %}" height="200px" class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="..." />
+            <img src="{% static 'images/carousel/image3.jpg' %}" height="200px" class="d-block w-100" alt="..." />
           </div>
         </div>
         <button
@@ -87,7 +87,7 @@
       </div>
 
       <div
-        class="h-100 d-flex align-items-center justify-content-center border m-lg-5 p-lg-5 bg-light"
+        class="h-100 d-flex align-items-center justify-content-center border  p-lg-5 bg-light"
       >
         <form class="align-content-center" id="download-form">
           <input
