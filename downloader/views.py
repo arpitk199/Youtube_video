@@ -1,9 +1,12 @@
 # views.py
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.messages import success,error
+from django.contrib.auth.models import User
 from pytube import YouTube
 import os
 
@@ -11,12 +14,16 @@ from .forms import DownloadForm
 
 progress = 0  # Global variable to store progress
 
+def home_view(Request):
+    return render(Request,"downloader/home.html")
+
 def download_progress(stream, chunk, file_handle, bytes_remaining):
     global progress
     total_size = stream.filesize
     bytes_downloaded = total_size - bytes_remaining
     progress = (bytes_downloaded / total_size) * 100
-@login_required
+
+# @login_required
 def download_video(request):
     global progress
     if request.method == 'POST':
@@ -60,3 +67,28 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('downloader/home.html')  # Redirect to home page
+
+# def signup_view(Request):
+#     if(Request.method=="POST"):
+#         password = Request.POST.get("password")
+#         cpassword = Request.POST.get("cpassword")
+#         if(password==cpassword):
+#             username = Request.POST.get("username")
+#             email = Request.POST.get("email")
+#             name = Request.POST.get("name")
+#             try:
+#                 User.objects.create_user(username=username,email=email,password=password,first_name=name)
+#                 phone = Request.POST.get("phone")
+
+#                 b = Buyer()
+#                 b.name = name
+#                 b.email = email
+#                 b.username = username
+#                 b.phone = phone
+#                 b.save()
+#                 return HttpResponseRedirect("/login")
+#             except:
+#                 error(Request,"username Already Exist !!!")
+#         else:
+#             error(Request,"Password and Confirm Password Doesn't Matched!!!")
+#     return render(Request,"signup.html")
