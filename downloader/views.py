@@ -68,27 +68,4 @@ def logout_view(request):
     logout(request)
     return redirect('downloader/home.html')  # Redirect to home page
 
-# def signup_view(Request):
-#     if(Request.method=="POST"):
-#         password = Request.POST.get("password")
-#         cpassword = Request.POST.get("cpassword")
-#         if(password==cpassword):
-#             username = Request.POST.get("username")
-#             email = Request.POST.get("email")
-#             name = Request.POST.get("name")
-#             try:
-#                 User.objects.create_user(username=username,email=email,password=password,first_name=name)
-#                 phone = Request.POST.get("phone")
 
-#                 b = Buyer()
-#                 b.name = name
-#                 b.email = email
-#                 b.username = username
-#                 b.phone = phone
-#                 b.save()
-#                 return HttpResponseRedirect("/login")
-#             except:
-#                 error(Request,"username Already Exist !!!")
-#         else:
-#             error(Request,"Password and Confirm Password Doesn't Matched!!!")
-#     return render(Request,"signup.html")
