@@ -68,4 +68,5 @@ def logout_view(request):
     logout(request)
     return redirect('downloader/home.html')  # Redirect to home page
 
-
+def singup_view(request):
+    return render(request,'downloader/singup.html') 
