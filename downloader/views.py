@@ -70,3 +70,7 @@ def logout_view(request):
 
 def singup_view(request):
     return render(request,'downloader/singup.html') 
+
+
+def forgot_password_view(request):
+    return render(request,'downloader/forgot_password.html') 
